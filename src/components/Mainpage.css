@@ -1,0 +1,21 @@
+.join {
+  margin-top: 15%;
+}
+
+@media screen and (max-width: 800px) {
+  .join {
+    margin-top: 25%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .join {
+    margin-top: 40%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .join {
+    margin-top: 50%;
+  }
+}
