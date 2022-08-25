@@ -11,7 +11,7 @@ import useAuth from "../../hooks/useAuth";
 const Login = () => {
   const [loginData, setLoginData] = useState({});
   const { user, loginUser, signInWithGoogle, isLoading } = useAuth();
-  const initialBalance = 0;
+  const [error, setError] = useState(false);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -26,9 +26,12 @@ const Login = () => {
   const handleLoginSubmit = (e) => {
     loginUser(loginData?.email, loginData?.password, location, navigate);
     e.preventDefault();
+    setTimeout(() => {
+      setError(true);
+    }, 2000);
   };
   const handleGoogleLogin = () => {
-    signInWithGoogle(location, navigate, initialBalance);
+    signInWithGoogle(location, navigate);
   };
 
   if (user.email) {
@@ -43,6 +46,11 @@ const Login = () => {
           <div className="flex flex-col justify-center px-8 pt-8 my-auto md:justify-start md:pt-0 md:px-24 lg:px-32">
             <p className="text-3xl font-bold font-header text-left">Login.</p>
             <BeatLoader loading={isLoading} size={30} />
+            {error && (
+              <h2 className="mt-2 text-red-700 font-medium">
+                May have entered wrong credentials
+              </h2>
+            )}
             {user?.email && (
               <p
                 style={{ color: "#b22121" }}
@@ -51,7 +59,7 @@ const Login = () => {
                 Login Successful!!
               </p>
             )}
-            <hr className="mt-1 " />
+
             <form
               onSubmit={handleLoginSubmit}
               className="flex flex-col pt-3 md:pt-8"
@@ -119,7 +127,7 @@ const Login = () => {
             <div className="pt-12 pb-12 text-center">
               <p>
                 Don&#x27;t have an account?
-                <Link to="/signup" className="font-semibold underline ml-2">
+                <Link to="/register" className="font-semibold underline ml-2">
                   Register here.
                 </Link>
               </p>

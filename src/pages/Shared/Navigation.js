@@ -2,15 +2,17 @@ import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { CgMenuGridR } from "react-icons/cg";
 import { AiOutlineCloseCircle } from "react-icons/ai";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../image/logo.png";
 import useAuth from "../../hooks/useAuth";
 
 export default function Navigation({ handleClick }) {
   const { user, logout } = useAuth();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     logout();
+    navigate("/login");
   };
 
   return (
@@ -33,11 +35,16 @@ export default function Navigation({ handleClick }) {
             >
               HOME
             </Link>
+            <Link
+              to="/myclasses"
+              className="text-base font-links font-bold mt-2 mr-1 hover:text-[#E1FF00]"
+            >
+              MY CLASS
+            </Link>
 
             {user.displayName ? (
               <button
                 onClick={handleLogout}
-                to="/signup"
                 className="text-base hover:text-[#E1FF00] font-links font-bold mt-2 mr-1 "
               >
                 LOGOUT{" "}
@@ -77,18 +84,23 @@ export default function Navigation({ handleClick }) {
               focus
               className="absolute top-0 w-screen inset-x-0 p-2 transition transform origin-top-right md:hidden"
             >
-              <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
+              <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-black divide-y-2 divide-gray-50">
                 <div className="pt-5 pb-6 px-5">
                   <div className="flex items-center justify-between">
-                    <div>
+                    {/* <div>
                       <div className="flex items-center">
                         <h1 className="text-4xl font-black font-title ">
                           GoodDeal
                         </h1>
                       </div>
-                    </div>
+                    </div> */}
+                    <NavLink to="/home">
+                      <div className="flex ml-4 md:ml-1 items-center cursor-pointer text-black">
+                        <img src={logo} alt="logo" className="w-20" />
+                      </div>
+                    </NavLink>
                     <div className="-mr-2">
-                      <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                      <Popover.Button className="bg-black rounded-md p-2 inline-flex items-center justify-center text-white hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                         <span className="sr-only">Close menu</span>
                         <AiOutlineCloseCircle
                           className="h-6 w-6"
@@ -97,8 +109,8 @@ export default function Navigation({ handleClick }) {
                       </Popover.Button>
                     </div>
                   </div>
-                  <div className="mt-10 text-center">
-                    <nav className="grid gap-y-12">
+                  <div className="mt-10 text-white text-center">
+                    <nav className="grid gap-y-8">
                       <Link
                         to="/home"
                         className="font-title text-xl font-bold mr-4 hover:text-blue-500"
@@ -106,23 +118,12 @@ export default function Navigation({ handleClick }) {
                         Home
                       </Link>
                       <Link
-                        to="/deposit"
+                        to="/home"
                         className="font-title text-xl font-bold mr-4 hover:text-blue-500"
                       >
-                        Deposit
+                        My Class
                       </Link>
-                      <Link
-                        to="/withdraw"
-                        className="font-title text-xl font-bold mr-4 hover:text-blue-500"
-                      >
-                        Withdraw
-                      </Link>
-                      <Link
-                        to="/account"
-                        className="font-title text-xl font-bold mr-4 hover:text-blue-500"
-                      >
-                        Account
-                      </Link>
+
                       {user.displayName ? (
                         <button
                           onClick={handleLogout}
@@ -130,7 +131,7 @@ export default function Navigation({ handleClick }) {
                           className="text-base hover:text-blue-500 font-links font-bold mt-2 mr-1  focus:text-black"
                         >
                           LOGOUT{" "}
-                          <span className="border-2 border-black py-1 px-2 rounded-lg">
+                          <span className="border-2 border-white py-1 px-2 rounded-lg">
                             {user.displayName.split(" ")[0]}
                           </span>
                         </button>

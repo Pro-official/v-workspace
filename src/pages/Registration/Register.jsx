@@ -29,6 +29,7 @@ const Signup = () => {
   const handleLoginSubmit = (e) => {
     if (loginData?.password !== loginData?.password2) {
       alert("Your password did not match");
+      e.preventDefault();
       return;
     }
     registerUser(loginData.email, loginData.password, loginData.name, navigate);
