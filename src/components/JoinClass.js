@@ -1,19 +1,18 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import Navigation from "../pages/Shared/Navigation";
 
 const JoinClass = () => {
   const { user } = useAuth();
   const [joinData, setjoinData] = useState({});
+  const [classes, setClasses] = useState([]);
+  const [classLoad, setClassLoad] = useState(false);
   const [success, setSuccess] = useState(false);
+  const navigate = useNavigate();
 
   const email = user.email;
   const handleBlur = (e) => {
-    // const code = codeRef.current.value;
-    // const id = idRef.current.value;
-    // const newData = { code, id };
-    // setjoinData(newData);
-    // console.log(newData);
     const field = e.target.name;
     const value = e.target.value;
     const newData = { ...joinData, email };
@@ -21,20 +20,42 @@ const JoinClass = () => {
     setjoinData(newData);
   };
 
-  const handleJoin = (e) => {
-    fetch(`http://localhost:5000/classes/${joinData.code}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(joinData),
-    })
+  setTimeout(() => {
+    fetch(`http://localhost:5000/classes/${joinData.code}`)
       .then((res) => res.json())
-      .then((data) => {
-        if (data.modifiedCount) {
-          setSuccess(true);
-        }
-      });
+      .then((data) => setClasses(data));
+    setClassLoad(true);
+    // console.log(classes);
+  }, 2000);
+
+  const handleJoin = (e) => {
+    setTimeout(() => {
+      if (classLoad === true) {
+        const teacherEmail = classes.email;
+        const courseName = classes.subject;
+        const finalData = {
+          ...joinData,
+          teacherEmail,
+          courseName,
+          email: email,
+        };
+        // console.log(finalData);
+        fetch(`http://localhost:5000/users/join/${email}`, {
+          method: "PUT",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(finalData),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.modifiedCount) {
+              setSuccess(true);
+              navigate("/joinedclasses");
+            }
+          });
+      }
+    }, 2000);
     e.preventDefault();
     e.target.reset();
   };
@@ -58,6 +79,11 @@ const JoinClass = () => {
               </div>
             </div>
           </div>
+          {success && (
+            <div className="mt-10">
+              <h1 className="font-bold text-[#163A24]">Class Joined!</h1>
+            </div>
+          )}
           <form
             onSubmit={handleJoin}
             className="mt-10 border-2 border-gray-400 p-4"

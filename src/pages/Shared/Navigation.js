@@ -39,7 +39,19 @@ export default function Navigation({ handleClick }) {
               to="/myclasses"
               className="text-base font-links font-bold mt-2 mr-1 hover:text-[#E1FF00]"
             >
-              MY CLASS
+              ClASSES
+            </Link>
+            <Link
+              to="/joinedclasses"
+              className="text-base font-links font-bold mt-2 mr-1 hover:text-[#E1FF00]"
+            >
+              ClASSROOM
+            </Link>
+            <Link
+              to="/workspace"
+              className="text-base font-links font-bold mt-2 mr-1 hover:text-[#E1FF00]"
+            >
+              WORKSPACE
             </Link>
 
             {user.displayName ? (

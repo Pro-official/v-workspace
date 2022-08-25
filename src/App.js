@@ -10,6 +10,7 @@ import Industries from "./pages/Industries";
 import JoinClass from "./components/JoinClass";
 import CreateClass from "./components/CreateClass";
 import MyClasses from "./components/MyClasses";
+import JoinedClasses from "./components/JoinedClasses";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/student" element={<Students />} />
           <Route path="/joinclass" element={<JoinClass />} />
+          <Route path="/joinedclasses" element={<JoinedClasses />} />
           <Route path="/teacher" element={<Teachers />} />
           <Route path="/createclass" element={<CreateClass />} />
           <Route path="/myclasses" element={<MyClasses />} />
