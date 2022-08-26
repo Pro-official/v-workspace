@@ -1,61 +1,68 @@
 import React, { useRef } from "react";
-import Navigation from "../pages/Shared/Navigation";
-import CreateRoomPhoto from "../image/create.jpg";
-import useAuth from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
+import Navigation from "../pages/Shared/Navigation";
+import PostWorkPhoto from "../image/work2.svg";
 
-const CreateClass = () => {
+const PostWork = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
+  // const [teachers, setTeachers] = useState([]);
 
   const nameRef = useRef();
   const emailRef = useRef();
-  const subjectRef = useRef();
+  const projectRef = useRef();
   const orgRef = useRef();
   const codeRef = useRef();
+
+  // useEffect(() => {
+  //   fetch("http://localhost:5000/users")
+  //     .then((res) => res.json())
+  //     .then((data) => setTeachers(data));
+  // }, []);
 
   const handleSubmit = (e) => {
     const name = nameRef.current.value;
     const email = emailRef.current.value;
-    const subject = subjectRef.current.value;
+    const project = projectRef.current.value;
     const org = orgRef.current.value;
     const code = codeRef.current.value;
-    const classroom = { displayName: name, email, subject, org, code };
+    const projectData = { displayName: name, email, project, org, code };
     e.preventDefault();
 
-    fetch(`http://localhost:5000/classes`, {
+    fetch(`http://localhost:5000/projects`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(classroom),
+      body: JSON.stringify(projectData),
     })
       .then((res) => res.json())
       .then((data) => {
-        alert("Classroom Created!");
-        navigate(`/home`);
+        alert("Workspace Created!");
+        navigate(`/workspace`);
       });
   };
 
   return (
     <>
       <Navigation />
-      <div className="flex mx-auto flex-wrap mt-4 w-full">
+      <div className="flex mx-auto flex-wrap w-full">
         <div className="w-1/2 shadow-2xl md:-mt-4">
           <img
             alt="login"
             className="hidden object-cover w-full h-screen md:block"
-            src={CreateRoomPhoto}
+            src={PostWorkPhoto}
           />
         </div>
         <div className="flex flex-col w-full md:w-1/2">
           <div className="flex flex-col justify-center px-8 pt-8 my-auto md:justify-start md:pt-0 md:px-24 lg:px-32">
             <p className="md:text-3xl text-xl text-[#163A24] font-bold font-header text-left">
-              Create Classroom
+              Post Work!
             </p>
             <form
               onSubmit={handleSubmit}
-              className="flex flex-col pt-3 md:pt-8"
+              className="flex flex-col pt-3 md:pt-4"
             >
               <div className="flex flex-col pt-4">
                 <div className="flex">
@@ -67,9 +74,9 @@ const CreateClass = () => {
                       fill="currentColor"
                     >
                       <path
-                        fill-rule="evenodd"
+                        fillRule="evenodd"
                         d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clip-rule="evenodd"
+                        clipRule="evenodd"
                       />
                     </svg>
                   </span>
@@ -115,13 +122,13 @@ const CreateClass = () => {
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
-                      stroke-width="1.5"
+                      strokeWidth="1.5"
                       stroke="currentColor"
                       class="w-5 h-5"
                     >
                       <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeWidth="round"
+                        strokeLinejoin="round"
                         d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"
                       />
                     </svg>
@@ -130,9 +137,9 @@ const CreateClass = () => {
                     type="text"
                     id="design-login-email"
                     className=" flex-1 h-14 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-[#163A24] focus:border-transparent"
-                    placeholder="Subject"
-                    name="subject"
-                    ref={subjectRef}
+                    placeholder="Project Title"
+                    name="project"
+                    ref={projectRef}
                   />
                 </div>
               </div>
@@ -143,13 +150,13 @@ const CreateClass = () => {
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
-                      stroke-width="1.5"
+                      strokeWidth="1.5"
                       stroke="currentColor"
                       class="w-5 h-5"
                     >
                       <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                         d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z"
                       />
                     </svg>
@@ -158,8 +165,8 @@ const CreateClass = () => {
                     type="text"
                     id="design-login-email"
                     className=" flex-1 h-14 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-[#163A24] focus:border-transparent"
-                    placeholder="University"
-                    name="university"
+                    placeholder="Company"
+                    name="company"
                     ref={orgRef}
                   />
                 </div>
@@ -191,7 +198,7 @@ const CreateClass = () => {
                 type="submit"
                 className="w-full rounded-lg h-14 px-4 py-2 mb-8 md:text-2xl font-bold text-center text-white transition duration-200 ease-in bg-[#163A24] shadow-md hover:text-black hover:border-2 border-[#163A24] font-header hover:bg-white focus:outline-none focus:ring-2"
               >
-                <span className="w-full">CREATE</span>
+                <span className="w-full">POST</span>
               </button>
             </form>
           </div>
@@ -201,4 +208,4 @@ const CreateClass = () => {
   );
 };
 
-export default CreateClass;
+export default PostWork;

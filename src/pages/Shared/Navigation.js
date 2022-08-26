@@ -21,7 +21,7 @@ export default function Navigation({ handleClick }) {
         <div className=" md:max-w-7xl w-full mx-auto p-4 flex items-center justify-between">
           <NavLink to="/home">
             <div className="flex ml-4 md:ml-1 items-center cursor-pointer text-black">
-              <img src={logo} alt="logo" className="w-20" />
+              <img src={logo} alt="logo" className="w-20 h-18" />
             </div>
           </NavLink>
 

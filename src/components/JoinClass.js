@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import Navigation from "../pages/Shared/Navigation";
+import Avatar from "../image/avatar.svg";
 
 const JoinClass = () => {
   const { user } = useAuth();
@@ -68,11 +69,15 @@ const JoinClass = () => {
           <div className="mt-3 border-2 border-gray-400 p-4 ">
             <p className="text-gray-500">Currently signed in as</p>
             <div className="mt-3 flex items-center">
-              <img
-                className="w-10 rounded-full mr-3"
-                src={user.photoURL}
-                alt=""
-              />
+              {user.photoURL ? (
+                <img
+                  className="w-10 rounded-full mr-3"
+                  src={user.photoURL}
+                  alt=""
+                />
+              ) : (
+                <img className="w-10 rounded-full mr-3" src={Avatar} alt="" />
+              )}
               <div>
                 <h1 className="text-gray-900">{user.displayName}</h1>
                 <h1 className="text-gray-500 text-sm">{user.email}</h1>

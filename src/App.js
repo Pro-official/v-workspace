@@ -11,6 +11,9 @@ import JoinClass from "./components/JoinClass";
 import CreateClass from "./components/CreateClass";
 import MyClasses from "./components/MyClasses";
 import JoinedClasses from "./components/JoinedClasses";
+import PostWork from "./components/PostWork";
+import Workspace from "./components/Workspace";
+import IndividualWork from "./components/IndividualWork";
 
 function App() {
   return (
@@ -28,6 +31,9 @@ function App() {
           <Route path="/createclass" element={<CreateClass />} />
           <Route path="/myclasses" element={<MyClasses />} />
           <Route path="/industry" element={<Industries />} />
+          <Route path="/postwork" element={<PostWork />} />
+          <Route path="/workspace" element={<Workspace />} />
+          <Route path="/workspace/:id" element={<IndividualWork />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
