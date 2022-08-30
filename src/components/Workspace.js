@@ -124,7 +124,7 @@ const Workspace = () => {
                   .reverse()}
               </>
             ) : (
-              <div className="api-loader ml-96 pl-72 mt-56">
+              <div className="api-loader md:ml-96 md:pl-72 md:mt-56">
                 <GridLoader loading size={24} color="#B22121" />
               </div>
             )}

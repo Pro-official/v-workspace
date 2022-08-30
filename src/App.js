@@ -14,6 +14,8 @@ import JoinedClasses from "./components/JoinedClasses";
 import PostWork from "./components/PostWork";
 import Workspace from "./components/Workspace";
 import IndividualWork from "./components/IndividualWork";
+import Assign from "./components/Assign";
+import Talk from "./components/Talk";
 
 function App() {
   return (
@@ -34,6 +36,8 @@ function App() {
           <Route path="/postwork" element={<PostWork />} />
           <Route path="/workspace" element={<Workspace />} />
           <Route path="/workspace/:id" element={<IndividualWork />} />
+          <Route path=":id/assign" element={<Assign />} />
+          <Route path="/talk" element={<Talk />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>

@@ -15,6 +15,8 @@ const MyClasses = () => {
     setLoading(true);
   }, []);
 
+  console.log(user);
+
   return (
     <>
       <Navigation />
