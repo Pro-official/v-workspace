@@ -15,6 +15,8 @@ import initializeAuthentication from "./../pages/Shared/Firebase/Firebase.init";
 // initialize firebase app
 initializeAuthentication();
 
+// const dataBase = initializeAuthentication.firestore();
+
 const useFirebase = () => {
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -134,6 +136,7 @@ const useFirebase = () => {
     loginUser,
     signInWithGoogle,
     logout,
+    // dataBase,
   };
 };
 

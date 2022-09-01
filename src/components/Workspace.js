@@ -4,6 +4,7 @@ import useAuth from "../hooks/useAuth";
 import Navigation from "../pages/Shared/Navigation";
 import Avatar from "../image/avatar.svg";
 import { Link } from "react-router-dom";
+import "./Workplace.css";
 
 const Workspace = () => {
   const [projects, setProjects] = useState([]);
@@ -20,36 +21,36 @@ const Workspace = () => {
   return (
     <>
       <Navigation />
-      <section class="text-gray-600 body-font">
-        <div class="container px-5 py-5 mx-auto ">
-          <div class="grid md:grid-cols-3 m-4">
+      {/* <section className="text-gray-600 body-font">
+        <div className=" px-5 py-5 mx-auto ">
+          <div className="grid md:grid-cols-3 m-4">
             {loading ? (
               <>
                 {projects
                   .filter((project) => project.email === user.email)
                   .map((project) => (
-                    <Link to={`${project._id}`}>
-                      <div class="p-4 ">
-                        <div class="h-full border-2  border-gray-400 border-opacity-60 rounded-2xl overflow-hidden">
-                          <div class="w-full">
-                            <div class="w-full flex p-2">
-                              <div class="p-2 ">
+                    <Link key={project._id} to={`${project._id}`}>
+                      <div className="p-4 ">
+                        <div className="h-full border-2  border-gray-400 border-opacity-60 rounded-2xl overflow-hidden">
+                          <div className="w-full">
+                            <div className="w-full flex p-2">
+                              <div className="p-2 ">
                                 {user.photoURL ? (
                                   <img
                                     src={user.photoURL}
                                     alt="author"
-                                    class="w-10 h-10 rounded-full overflow-hidden"
+                                    className="w-10 h-10 rounded-full overflow-hidden"
                                   />
                                 ) : (
                                   <img
                                     src={Avatar}
                                     alt="author"
-                                    class="w-10 h-10 rounded-full overflow-hidden"
+                                    className="w-10 h-10 rounded-full overflow-hidden"
                                   />
                                 )}
                               </div>
-                              <div class="pl-2 pt-4">
-                                <p class="font-bold text-[#163A24]">
+                              <div className="pl-2 pt-4">
+                                <p className="font-bold text-[#163A24]">
                                   {project.displayName}
                                 </p>
                               </div>
@@ -57,58 +58,58 @@ const Workspace = () => {
                           </div>
 
                           <img
-                            class="lg:h-48 md:h-36 w-full object-cover object-center"
+                            className="lg:h-48 md:h-36 w-full object-cover object-center"
                             src="https://firebasestorage.googleapis.com/v0/b/thecaffeinecode.appspot.com/o/blog.jpg?alt=media&token=271cb624-94d4-468d-a14d-455377ba75c2"
                             alt="blog cover"
                           />
 
-                          <div class="p-4">
-                            <h2 class="tracking-widest text-xs title-font font-bold text-green-400 mb-1 uppercase ">
+                          <div className="p-4">
+                            <h2 className="tracking-widest text-xs title-font font-bold text-green-400 mb-1 uppercase ">
                               {project.org}
                             </h2>
-                            <h1 class="title-font text-lg font-medium text-gray-900 mb-1">
+                            <h1 className="title-font text-lg font-medium text-gray-900 mb-1">
                               {project.project}
                             </h1>
-                            <div class="flex items-center flex-wrap ">
-                              <button class="text-green-400  md:mb-2 lg:mb-0">
-                                <p class="inline-flex items-center">
+                            <div className="flex items-center flex-wrap ">
+                              <button className="text-green-400  md:mb-2 lg:mb-0">
+                                <p className="inline-flex items-center">
                                   Explore Class
                                   <svg
-                                    class="w-4 h-4 ml-2"
+                                    className="w-4 h-4 ml-2"
                                     viewBox="0 0 24 24"
                                     stroke="currentColor"
-                                    stroke-width="2"
+                                    strokeWidth="2"
                                     fill="none"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
                                   >
                                     <path d="M5 12h14"></path>
                                     <path d="M12 5l7 7-7 7"></path>
                                   </svg>
                                 </p>
                               </button>
-                              <span class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                              <span className="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
                                 <svg
-                                  class="w-4 h-4 mr-1"
+                                  className="w-4 h-4 mr-1"
                                   viewBox="0 0 24 24"
                                   fill="none"
                                   stroke="currentColor"
-                                  stroke-width="2"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
+                                  strokeWidth="2"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
                                 >
                                   <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
                                 </svg>
                                 24
                               </span>
-                              <span class="text-gray-400 inline-flex items-center leading-none text-sm">
+                              <span className="text-gray-400 inline-flex items-center leading-none text-sm">
                                 <svg
-                                  class="w-4 h-4 mr-1"
+                                  className="w-4 h-4 mr-1"
                                   stroke="currentColor"
-                                  stroke-width="2"
+                                  strokeWidth="2"
                                   fill="none"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
                                   viewBox="0 0 24 24"
                                 >
                                   <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
@@ -130,6 +131,62 @@ const Workspace = () => {
             )}
           </div>
         </div>
+      </section> */}
+      <section>
+        <section class="area mt-10 mb-10">
+          {loading ? (
+            <>
+              {projects
+                .filter((project) => project.email === user.email)
+                .map((project) => (
+                  <Link key={project._id} to={`${project._id}`}>
+                    <div class="half border-2 m-8 shadow-lg">
+                      <div className="flex items-center">
+                        {user.photoURL ? (
+                          <img className="w-10" src={user.phtoURL} alt="User" />
+                        ) : (
+                          <img className="w-10" src={Avatar} alt="User" />
+                        )}
+                        <h1 className="ml-4">{user.displayName}</h1>
+                      </div>
+                      <h1 className="mt-3 text-lg text-[#163A24] font-bold">
+                        {project.project}
+                      </h1>
+                      <h3 className="mt-3">{project.desc}</h3>
+                      <p className="text-sm mt-3 text-gray-600">
+                        {project.org}
+                      </p>
+                      <button
+                        type="submit"
+                        class="btn mt-3 rounded-lg flex items-center font-bold uppercase"
+                      >
+                        <span>Explore</span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={1.5}
+                          stroke="currentColor"
+                          className="w-4 ml-2"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+                  </Link>
+                ))
+                .reverse()}
+            </>
+          ) : (
+            <div className="api-loader md:ml-96 md:pl-72 md:mt-56">
+              <GridLoader loading size={24} color="#B22121" />
+            </div>
+          )}
+        </section>
       </section>
     </>
   );
