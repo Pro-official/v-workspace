@@ -2,7 +2,13 @@ import { Fragment } from "react";
 import { Popover, Transition, Menu } from "@headlessui/react";
 import { CgMenuGridR } from "react-icons/cg";
 import { AiOutlineCloseCircle } from "react-icons/ai";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import {
+  Link,
+  NavLink,
+  useLocation,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 import logo from "../../image/logo.png";
 import useAuth from "../../hooks/useAuth";
 
@@ -11,8 +17,19 @@ function classNames(...classes) {
 }
 
 export default function ClassNav({ handleClick }) {
-  const { user, logout } = useAuth();
+  let activeStyle = {
+    textDecoration: "underline",
+    textUnderlineOffset: "10px",
+  };
+
+  const { user, logout, signInWithGoogle } = useAuth();
+  const location = useLocation();
   const navigate = useNavigate();
+  const { code } = useParams();
+
+  const handleGoogleLogin = () => {
+    signInWithGoogle(location, navigate);
+  };
 
   const handleLogout = () => {
     logout();
@@ -29,41 +46,47 @@ export default function ClassNav({ handleClick }) {
             </div>
           </NavLink>
 
-          <Popover.Group
-            as="nav"
-            className="text-white hidden md:flex space-x-10"
-          >
-            <Link
-              to="/home"
+          <div className="space-x-10 text-white hidden md:flex">
+            <NavLink
+              to={`/myclasses/classroom/${code}`}
+              style={({ isActive }) => (isActive ? activeStyle : undefined)}
               className="text-base font-links font-bold mt-2 mr-1 hover:text-[#E1FF00]"
             >
-              HOME
-            </Link>
-            <Link
-              to="/feed"
+              STREAM
+            </NavLink>
+            <NavLink
+              to={`/myclasses/classroom/announcement/${code}`}
+              style={({ isActive }) => (isActive ? activeStyle : undefined)}
               className="text-base font-links font-bold mt-2 mr-1 hover:text-[#E1FF00]"
             >
-              FEED
-            </Link>
-            <Link
+              ANNOUNCE
+            </NavLink>
+            <NavLink
               to="/people"
+              style={({ isActive }) => (isActive ? activeStyle : undefined)}
               className="text-base font-links font-bold mt-2 mr-1 hover:text-[#E1FF00]"
             >
               PEOPLE
-            </Link>
-            <Link
-              to="/works"
+            </NavLink>
+            <NavLink
+              to="/assigned"
+              style={({ isActive }) => (isActive ? activeStyle : undefined)}
               className="text-base font-links font-bold mt-2 mr-1 hover:text-[#E1FF00]"
             >
-              WORKS
-            </Link>
-            <Link
+              ASSIGNED
+            </NavLink>
+            <NavLink
               to="/talk"
+              style={({ isActive }) => (isActive ? activeStyle : undefined)}
               className="text-base font-links font-bold mt-2 mr-1 hover:text-[#E1FF00]"
             >
               TALK
-            </Link>
-
+            </NavLink>
+          </div>
+          <Popover.Group
+            as="nav"
+            className="text-white hidden md:flex items-center space-x-10"
+          >
             {user.displayName ? (
               <Menu>
                 <Menu.Button
@@ -78,7 +101,7 @@ export default function ClassNav({ handleClick }) {
                       viewBox="0 0 24 24"
                       strokeWidth="1.5"
                       stroke="currentColor"
-                      class="w-4 h-4 mt-2"
+                      className="w-4 h-4 mt-2"
                     >
                       <path
                         strokeLinecap="round"
@@ -117,6 +140,7 @@ export default function ClassNav({ handleClick }) {
                       <Menu.Item>
                         {({ active }) => (
                           <button
+                            onClick={handleGoogleLogin}
                             className={classNames(
                               active
                                 ? "bg-gray-100 text-gray-900"
@@ -132,7 +156,7 @@ export default function ClassNav({ handleClick }) {
                         <Menu.Item>
                           {({ active }) => (
                             <button
-                              type="submit"
+                              onClick={handleLogout}
                               className={classNames(
                                 active
                                   ? "bg-gray-100 text-gray-900"

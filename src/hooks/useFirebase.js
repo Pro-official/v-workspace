@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { initializeApp } from "firebase/app";
+import { getDatabase } from "firebase/database";
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -10,12 +12,14 @@ import {
   getIdToken,
   signOut,
 } from "firebase/auth";
-import initializeAuthentication from "./../pages/Shared/Firebase/Firebase.init";
+// import initializeAuthentication from "./../pages/Shared/Firebase/Firebase.init";
+import firebaseConfig from "../pages/Shared/Firebase/Firebase.config";
 
 // initialize firebase app
-initializeAuthentication();
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
-// const dataBase = initializeAuthentication.firestore();
+const database = getDatabase(app);
 
 const useFirebase = () => {
   const [user, setUser] = useState({});

@@ -1,10 +1,10 @@
 import React from "react";
-import ClassNav from "../pages/Shared/ClassNav";
+import Navigation from "../pages/Shared/Navigation";
 
 const Assign = () => {
   return (
     <>
-      <ClassNav />
+      <Navigation />
       <div class="relative flex min-h-screen flex-col items-center mt-20 overflow-hidden bg-white p-8 sm:p-12">
         <div class="w-full max-w-xl rounded-2xl bg-violet-50 px-20 py-14">
           <div class="mx-auto flex max-w-sm flex-col items-center">

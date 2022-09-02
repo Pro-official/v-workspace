@@ -27,10 +27,7 @@ const MyClasses = () => {
                 {classes
                   .filter((cl) => cl.email === user.email)
                   .map((cl) => (
-                    <Link
-                      key={cl.code}
-                      to={`/talk?email=${cl.email}&room=${cl.code}`}
-                    >
+                    <Link key={cl.code} to={`/myclasses/classroom/${cl.code}`}>
                       <div className="p-4">
                         <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-2xl overflow-hidden">
                           <div className="w-full">

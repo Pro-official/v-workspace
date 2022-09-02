@@ -27,7 +27,7 @@ const JoinedClasses = () => {
                   .filter((cl) => cl.email === user.email)
                   .map((cl) =>
                     cl.classInfo.map((info) => (
-                      <div className="p-4">
+                      <div key={cl.code} className="p-4">
                         <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-2xl overflow-hidden">
                           <div className="w-full">
                             <div className="w-full flex p-2">
