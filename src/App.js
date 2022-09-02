@@ -15,7 +15,7 @@ import PostWork from "./components/PostWork";
 import Workspace from "./components/Workspace";
 import Assign from "./components/Assign";
 // import Classroom from "./components/Shared/Classroom";
-// import Talk from "./components/Chat/Talk";
+import Talk from "./components/Chat/Talk";
 import AssignInClass from "./components/AssignInClass/AssignInClass";
 import IndividualClass from "./components/Shared/IndividualClass";
 // import Editor from "./components/Shared/Editor";
@@ -53,7 +53,7 @@ function App() {
           <Route path="/postwork" element={<PostWork />} />
           <Route path="/workspace" element={<Workspace />} />
           <Route path=":id/assign-teacher" element={<Assign />} />
-          {/* <Route path="/talk" element={<Talk />} /> */}
+          <Route path="/talk" element={<Talk />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>

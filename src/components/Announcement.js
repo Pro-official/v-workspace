@@ -105,7 +105,6 @@ const PostAnnouncement = () => {
                         </p>
                         <input
                           ref={linkRef}
-                          required
                           placeholder="Paste link here"
                           className="w-full p-3 mt-4 border border-[#163A24] rounded outline-none focus:bg-gray-50"
                         />
@@ -120,7 +119,6 @@ const PostAnnouncement = () => {
                         </p>
                         <input
                           ref={docRef}
-                          required
                           placeholder="PDF file link"
                           className="w-full p-3 mt-4 border border-[#163A24] rounded outline-none focus:bg-gray-50"
                         />
