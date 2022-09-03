@@ -17,7 +17,6 @@ import firebaseConfig from "../pages/Shared/Firebase/Firebase.config";
 
 // initialize firebase app
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
 
 const database = getDatabase(app);
 
@@ -28,7 +27,7 @@ const useFirebase = () => {
   const [admin, setAdmin] = useState(false);
   const [token, setToken] = useState("");
 
-  const auth = getAuth();
+  const auth = getAuth(app);
   const googleProvider = new GoogleAuthProvider();
 
   const registerUser = (email, password, name, history) => {
@@ -140,7 +139,8 @@ const useFirebase = () => {
     loginUser,
     signInWithGoogle,
     logout,
-    // dataBase,
+    auth,
+    database,
   };
 };
 

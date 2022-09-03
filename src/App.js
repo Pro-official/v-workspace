@@ -18,8 +18,10 @@ import Assign from "./components/Assign";
 import Talk from "./components/Chat/Talk";
 import AssignInClass from "./components/AssignInClass/AssignInClass";
 import IndividualClass from "./components/Shared/IndividualClass";
+
 // import Editor from "./components/Shared/Editor";
 import Announcement from "./components/Announcement";
+import AssignedPosts from "./components/AssignedPosts";
 
 function App() {
   return (
@@ -44,6 +46,10 @@ function App() {
           <Route
             path="/myclasses/classroom/:code"
             element={<IndividualClass />}
+          />
+          <Route
+            path="/myclasses/classroom/:code/assigedposts"
+            element={<AssignedPosts />}
           />
           <Route
             path="myclasses/classroom/announcement/:code"

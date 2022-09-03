@@ -61,15 +61,15 @@ export default function ClassNav({ handleClick }) {
             >
               ANNOUNCE
             </NavLink>
-            <NavLink
+            {/* <NavLink
               to="/people"
               style={({ isActive }) => (isActive ? activeStyle : undefined)}
               className="text-base font-links font-bold mt-2 mr-1 hover:text-[#E1FF00]"
             >
               PEOPLE
-            </NavLink>
+            </NavLink> */}
             <NavLink
-              to="/assigned"
+              to={`/myclasses/classroom/${code}/assigedposts`}
               style={({ isActive }) => (isActive ? activeStyle : undefined)}
               className="text-base font-links font-bold mt-2 mr-1 hover:text-[#E1FF00]"
             >

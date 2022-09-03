@@ -49,7 +49,7 @@ const JoinClass = () => {
         .then((data) => {
           if (data.modifiedCount) {
             setSuccess(true);
-            navigate("/joinedclasses");
+            navigate(`/myclasses/classroom/${joinData.code}`);
           }
         });
     }

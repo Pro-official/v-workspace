@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { GridLoader } from "react-spinners";
-import useAuth from "../../hooks/useAuth";
-import ClassNav from "../../pages/Shared/ClassNav";
-import PostWorkPhoto from "../../image/work.svg";
-import AvatarPhoto from "../../image/avatar.svg";
+// import PostWorkPhoto from "../../image/work.svg";
+import PostWorkPhoto from "../image/work.svg";
+import AvatarPhoto from "../image/avatar.svg";
+import useAuth from "../hooks/useAuth";
+import ClassNav from "../pages/Shared/ClassNav";
 
-const IndividualClass = () => {
+const AssignedPosts = () => {
   const [cl, setCl] = useState([]);
   const [success, setSuccess] = useState(false);
   const { user } = useAuth();
@@ -21,7 +22,6 @@ const IndividualClass = () => {
       });
   }, [code, success]);
 
-  // console.log(cl);
   return (
     <>
       <ClassNav />
@@ -60,8 +60,8 @@ const IndividualClass = () => {
             </div>
             <section className="mt-20 mb-10">
               <>
-                {cl.posts ? (
-                  cl.posts
+                {cl.assign ? (
+                  cl.assign
                     .map((post) => (
                       <div
                         key={cl._id}
@@ -91,9 +91,9 @@ const IndividualClass = () => {
                         <h1 className="mt-3 text-2xl text-[#163A24] font-bold">
                           {post.title}
                         </h1>
-                        <h3 className="mt-1 mb-3">{post.description}</h3>
+                        <h3 className="mt-1 mb-3">{post.desc}</h3>
                         <p className="text-sm inline px-2 pt-1 pb-2 rounded-lg text-white bg-[#163A24]">
-                          {post.tag}
+                          {post.time} Days
                         </p>
                       </div>
                     ))
@@ -121,4 +121,4 @@ const IndividualClass = () => {
   );
 };
 
-export default IndividualClass;
+export default AssignedPosts;

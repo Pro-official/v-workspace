@@ -1,19 +1,32 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { CgMenuGridR } from "react-icons/cg";
 import { AiOutlineCloseCircle } from "react-icons/ai";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate, useParams } from "react-router-dom";
 import logo from "../../image/logo.png";
 import useAuth from "../../hooks/useAuth";
 
 export default function Navigation({ handleClick }) {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const [users, setUsers] = useState([]);
+  const [success, setSuccess] = useState(false);
+  const { email } = useParams();
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/users/${email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setUsers(data);
+        setSuccess(true);
+      });
+  }, [email]);
 
   const handleLogout = () => {
     logout();
     navigate("/login");
   };
+  console.log(user.type);
 
   return (
     <>
@@ -73,6 +86,7 @@ export default function Navigation({ handleClick }) {
               </Link>
             )}
           </Popover.Group>
+
           <div className="mr-4 my-2 md:hidden">
             <Popover.Button>
               <span className="sr-only">Open menu</span>
