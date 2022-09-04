@@ -18,10 +18,7 @@ const Assign = () => {
               </span>{" "}
               to get top-notch evaluation of your project.
             </p>
-            <form
-              action=""
-              class="mx-auto mt-6 flex w-full flex-col gap-3 px-5 sm:flex-row"
-            >
+            <form class="mx-auto mt-6 flex w-full flex-col gap-3 px-5 sm:flex-row">
               <input
                 type="email"
                 name="email"

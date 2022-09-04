@@ -73,19 +73,11 @@ const IndividualClass = () => {
                       >
                         <div className="p-10 border-2 shadow-sm hover:shadow-lg">
                           <div className="flex items-center">
-                            {user.photoURL ? (
-                              <img
-                                className="w-10"
-                                src={user.phtoURL}
-                                alt="User"
-                              />
-                            ) : (
-                              <img
-                                className="w-10"
-                                src={AvatarPhoto}
-                                alt="User"
-                              />
-                            )}
+                            <img
+                              className="w-10"
+                              src={AvatarPhoto}
+                              alt="User"
+                            />
                             <div>
                               <h1 className="ml-4 font-bold">
                                 {cl.displayName}

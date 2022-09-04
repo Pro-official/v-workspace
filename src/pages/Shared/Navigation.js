@@ -60,11 +60,24 @@ export default function Navigation() {
                     >
                       ClASSES
                     </Link>
+
                     <Link
                       to="/workspace"
                       className="text-base font-links font-bold mt-2 mr-1 hover:text-[#E1FF00]"
                     >
                       WORKSPACE
+                    </Link>
+                    <Link
+                      to="/joinedclasses"
+                      className="text-base font-links font-bold mt-2 mr-1 hover:text-[#E1FF00]"
+                    >
+                      CLASSROOM
+                    </Link>
+                    <Link
+                      to="/joinclass"
+                      className="text-base font-links font-bold mt-2 mr-1 hover:text-[#E1FF00]"
+                    >
+                      JOIN
                     </Link>
                   </div>
                 )}

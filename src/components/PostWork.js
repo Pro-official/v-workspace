@@ -15,12 +15,6 @@ const PostWork = () => {
   const limitRef = useRef();
   const orgRef = useRef();
 
-  // useEffect(() => {
-  //   fetch("http://localhost:5000/users")
-  //     .then((res) => res.json())
-  //     .then((data) => setTeachers(data));
-  // }, []);
-
   const handleSubmit = (e) => {
     const name = user.displayName;
     const email = user.email;

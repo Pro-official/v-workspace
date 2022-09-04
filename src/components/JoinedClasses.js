@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { GridLoader } from "react-spinners";
 import useAuth from "../hooks/useAuth";
 import Navigation from "../pages/Shared/Navigation";
+import AvatarPhoto from "../image/avatar.svg";
 
 const JoinedClasses = () => {
   const [classes, setClasses] = useState([]);
@@ -12,8 +13,10 @@ const JoinedClasses = () => {
   useEffect(() => {
     fetch("http://localhost:5000/users")
       .then((res) => res.json())
-      .then((data) => setClasses(data));
-    setLoading(true);
+      .then((data) => {
+        setClasses(data);
+        setLoading(true);
+      });
   }, []);
 
   return (
@@ -37,7 +40,7 @@ const JoinedClasses = () => {
                               <div className="w-full flex p-2">
                                 <div className="p-2 ">
                                   <img
-                                    src={user.photoURL}
+                                    src={AvatarPhoto}
                                     alt="author"
                                     className="w-10 h-10 rounded-full overflow-hidden"
                                   />
