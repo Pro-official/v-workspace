@@ -54,7 +54,7 @@ const Signup = () => {
                 style={{ color: "#b22121" }}
                 className="fw-bold text-left text-xl"
               >
-                Login Successful!!
+                Registration Successful!!
               </p>
             )}
             <form onSubmit={handleLoginSubmit} className="flex flex-col pt-3">

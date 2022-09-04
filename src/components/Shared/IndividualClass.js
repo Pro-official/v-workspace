@@ -28,7 +28,10 @@ const IndividualClass = () => {
       {success ? (
         <>
           <div className="md:max-w-3xl mx-auto">
-            <div className="rounded relative mt-8 h-72">
+            <h1 className="mt-3 font-bold text-xl text-[#163A24]">
+              {cl.subject}
+            </h1>
+            <div className="rounded relative mt-2 h-72">
               <img
                 src={PostWorkPhoto}
                 alt=""
@@ -58,44 +61,49 @@ const IndividualClass = () => {
                 </div>
               </div>
             </div>
-            <section className="mt-20 mb-10">
+
+            <section className="mt-3 mb-10">
               <>
                 {cl.posts ? (
                   cl.posts
                     .map((post) => (
-                      <div
+                      <Link
                         key={cl._id}
-                        className="p-10 border-2 shadow-sm hover:shadow-lg"
+                        to={`/myclasses/classroom/submit/${post.postID}`}
                       >
-                        <div className="flex items-center">
-                          {user.photoURL ? (
-                            <img
-                              className="w-10"
-                              src={user.phtoURL}
-                              alt="User"
-                            />
-                          ) : (
-                            <img
-                              className="w-10"
-                              src={AvatarPhoto}
-                              alt="User"
-                            />
-                          )}
-                          <div>
-                            <h1 className="ml-4 font-bold">{cl.displayName}</h1>
-                            <p className="ml-4 -mt-1 text-sm text-gray-600">
-                              {cl.email}
-                            </p>
+                        <div className="p-10 border-2 shadow-sm hover:shadow-lg">
+                          <div className="flex items-center">
+                            {user.photoURL ? (
+                              <img
+                                className="w-10"
+                                src={user.phtoURL}
+                                alt="User"
+                              />
+                            ) : (
+                              <img
+                                className="w-10"
+                                src={AvatarPhoto}
+                                alt="User"
+                              />
+                            )}
+                            <div>
+                              <h1 className="ml-4 font-bold">
+                                {cl.displayName}
+                              </h1>
+                              <p className="ml-4 -mt-1 text-sm text-gray-600">
+                                {cl.email}
+                              </p>
+                            </div>
                           </div>
+                          <h1 className="mt-3 text-2xl text-[#163A24] font-bold">
+                            {post.title}
+                          </h1>
+                          <h3 className="mt-1 mb-3">{post.description}</h3>
+                          <p className="text-sm inline px-2 pt-1 pb-2 rounded-lg text-white bg-[#163A24]">
+                            {post.tag}
+                          </p>
                         </div>
-                        <h1 className="mt-3 text-2xl text-[#163A24] font-bold">
-                          {post.title}
-                        </h1>
-                        <h3 className="mt-1 mb-3">{post.description}</h3>
-                        <p className="text-sm inline px-2 pt-1 pb-2 rounded-lg text-white bg-[#163A24]">
-                          {post.tag}
-                        </p>
-                      </div>
+                      </Link>
                     ))
                     .reverse()
                 ) : (

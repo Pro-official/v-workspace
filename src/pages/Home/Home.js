@@ -25,7 +25,7 @@ const Home = () => {
     const email = emailRef.current.value;
     const type = typeRef.current.value;
     const profile = { name, email, type };
-    console.log(profile);
+    // console.log(profile);
     e.preventDefault();
 
     fetch(`http://localhost:5000/users/${email}`, {
@@ -47,6 +47,7 @@ const Home = () => {
   return (
     <>
       <Navigation />
+
       {user.email ? (
         <>
           {persons

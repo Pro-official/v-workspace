@@ -55,7 +55,7 @@ const Workspace = () => {
                         profile.type === "teacher" ? (
                           <Link
                             key={profile._id}
-                            to={`myclasses/${project._id}/assign-in-class`}
+                            to={`/myclasses/${project._id}/assign-in-class`}
                           >
                             <button
                               type="submit"

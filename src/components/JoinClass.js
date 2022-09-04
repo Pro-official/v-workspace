@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import Navigation from "../pages/Shared/Navigation";
@@ -11,6 +11,8 @@ const JoinClass = () => {
   const [classes, setClasses] = useState([]);
   const [classLoad, setClassLoad] = useState(false);
   const [success, setSuccess] = useState(false);
+  const idRef = useRef();
+  const codeRef = useRef();
   const navigate = useNavigate();
 
   const email = user.email;
@@ -24,8 +26,10 @@ const JoinClass = () => {
 
   fetch(`http://localhost:5000/classes/${joinData.code}`)
     .then((res) => res.json())
-    .then((data) => setClasses(data));
-  setClassLoad(true);
+    .then((data) => {
+      setClasses(data);
+      setClassLoad(true);
+    });
 
   const handleJoin = (e) => {
     if (classLoad === true) {
@@ -35,9 +39,8 @@ const JoinClass = () => {
         ...joinData,
         teacherEmail,
         courseName,
-        email: email,
       };
-      // console.log(finalData);
+
       fetch(`http://localhost:5000/users/join/${email}`, {
         method: "PUT",
         headers: {
@@ -49,9 +52,28 @@ const JoinClass = () => {
         .then((data) => {
           if (data.modifiedCount) {
             setSuccess(true);
+          }
+        });
+
+      // PUT Student ID and Email in Classroom
+      const id = idRef.current.value;
+      const code = codeRef.current.value;
+      const info = { id, email, code };
+      fetch(`http://localhost:5000/classes/join/student`, {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(info),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.modifiedCount) {
+            setSuccess(true);
             navigate(`/myclasses/classroom/${joinData.code}`);
           }
         });
+      // console.log(info);
     }
     e.preventDefault();
     e.target.reset();
@@ -106,8 +128,8 @@ const JoinClass = () => {
                   <input
                     type="text"
                     name="code"
+                    ref={codeRef}
                     onChange={handleBlur}
-                    // ref={codeRef}
                     className="peer block w-full appearance-none border-0 border-b border-[#163A24] bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-[#163A24] focus:outline-none focus:ring-0"
                   />
                   <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-[#163A24] duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-[#163A24]">
@@ -118,8 +140,8 @@ const JoinClass = () => {
                   <input
                     type="number"
                     name="id"
+                    ref={idRef}
                     onChange={handleBlur}
-                    // ref={idRef}
                     className="peer block w-full appearance-none border-0 border-b border-[#163A24] bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-[#163A24] focus:outline-none focus:ring-0"
                   />
                   <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-[#163A24] duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-[#163A24]">

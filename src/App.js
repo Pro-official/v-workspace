@@ -14,14 +14,13 @@ import JoinedClasses from "./components/JoinedClasses";
 import PostWork from "./components/PostWork";
 import Workspace from "./components/Workspace";
 import Assign from "./components/Assign";
-// import Classroom from "./components/Shared/Classroom";
 import Talk from "./components/Chat/Talk";
 import AssignInClass from "./components/AssignInClass/AssignInClass";
 import IndividualClass from "./components/Shared/IndividualClass";
-
-// import Editor from "./components/Shared/Editor";
 import Announcement from "./components/Announcement";
 import AssignedPosts from "./components/AssignedPosts";
+import SubmitAssignment from "./components/SubmitAssignment";
+import Submissions from "./components/Submissions";
 
 function App() {
   return (
@@ -42,7 +41,6 @@ function App() {
             path="myclasses/:id/assign-in-class"
             element={<AssignInClass />}
           />
-          {/* <Route path="/myclasses/classroom" element={<Classroom />} /> */}
           <Route
             path="/myclasses/classroom/:code"
             element={<IndividualClass />}
@@ -55,11 +53,19 @@ function App() {
             path="myclasses/classroom/announcement/:code"
             element={<Announcement />}
           />
+          <Route path="/myclasses/classroom/:code/talk" element={<Talk />} />
+          <Route
+            path="/myclasses/classroom/submit/:postID"
+            element={<SubmitAssignment />}
+          />
+          <Route
+            path="/myclasses/classroom/submissions/:postID"
+            element={<Submissions />}
+          />
           <Route path="/industry" element={<Industries />} />
           <Route path="/postwork" element={<PostWork />} />
           <Route path="/workspace" element={<Workspace />} />
           <Route path=":id/assign-teacher" element={<Assign />} />
-          <Route path="/talk" element={<Talk />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>

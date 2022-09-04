@@ -76,7 +76,7 @@ export default function ClassNav({ handleClick }) {
               ASSIGNED
             </NavLink>
             <NavLink
-              to="/talk"
+              to={`/myclasses/classroom/${code}/talk`}
               style={({ isActive }) => (isActive ? activeStyle : undefined)}
               className="text-base font-links font-bold mt-2 mr-1 hover:text-[#E1FF00]"
             >

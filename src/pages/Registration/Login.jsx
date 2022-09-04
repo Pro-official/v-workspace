@@ -116,14 +116,14 @@ const Login = () => {
               >
                 <span className="w-full">SUBMIT</span>
               </button>
-              <button
-                onClick={handleGoogleLogin}
-                className="flex items-center justify-center text-xl mt-5 border-2 border-slate-900 px-4 py-3 rounded cursor-pointer bg-transparent text-black focus:bg-black focus:text-white font-bold"
-              >
-                Login with Google
-                <FcGoogle className="ml-2 text-2xl" />
-              </button>
             </form>
+            <button
+              onClick={handleGoogleLogin}
+              className="flex items-center justify-center text-xl mt-5 border-2 border-slate-900 px-4 py-3 rounded cursor-pointer bg-transparent text-black focus:bg-black focus:text-white font-bold"
+            >
+              Login with Google
+              <FcGoogle className="ml-2 text-2xl" />
+            </button>
             <div className="pt-12 pb-12 text-center">
               <p>
                 Don&#x27;t have an account?

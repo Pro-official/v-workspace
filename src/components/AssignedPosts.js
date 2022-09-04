@@ -88,10 +88,14 @@ const AssignedPosts = () => {
                             </p>
                           </div>
                         </div>
-                        <h1 className="mt-3 text-2xl text-[#163A24] font-bold">
-                          {post.title}
+                        <h1 className="mt-3  text-2xl text-[#163A24] font-bold">
+                          {post.project}
                         </h1>
-                        <h3 className="mt-1 mb-3">{post.desc}</h3>
+                        <h3 className="mt-1 text-base text-gray-600 mb-3">
+                          {post.desc}
+                        </h3>
+                        <h1 className="font-bold">Teacher Requirements: </h1>
+                        <p className="mb-3">{post.instruction}</p>
                         <p className="text-sm inline px-2 pt-1 pb-2 rounded-lg text-white bg-[#163A24]">
                           {post.time} Days
                         </p>

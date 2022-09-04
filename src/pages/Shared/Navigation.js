@@ -2,31 +2,32 @@ import { Fragment, useEffect, useState } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { CgMenuGridR } from "react-icons/cg";
 import { AiOutlineCloseCircle } from "react-icons/ai";
-import { Link, NavLink, useNavigate, useParams } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../image/logo.png";
 import useAuth from "../../hooks/useAuth";
 
-export default function Navigation({ handleClick }) {
+export default function Navigation() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
-  const [users, setUsers] = useState([]);
+  const [profile, setProfiles] = useState([]);
   const [success, setSuccess] = useState(false);
-  const { email } = useParams();
+  const email = user.email;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/users/${email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setUsers(data);
-        setSuccess(true);
-      });
+    if (email) {
+      fetch(`http://localhost:5000/users/${email}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setProfiles(data);
+          setSuccess(true);
+        });
+    } else console.log("Can not fetch data");
   }, [email]);
 
   const handleLogout = () => {
     logout();
     navigate("/login");
   };
-  console.log(user.type);
 
   return (
     <>
@@ -40,7 +41,7 @@ export default function Navigation({ handleClick }) {
 
           <Popover.Group
             as="nav"
-            className="text-white hidden md:flex space-x-10"
+            className="text-white hidden md:flex items-center space-x-10"
           >
             <Link
               to="/home"
@@ -48,24 +49,53 @@ export default function Navigation({ handleClick }) {
             >
               HOME
             </Link>
-            <Link
-              to="/myclasses"
-              className="text-base font-links font-bold mt-2 mr-1 hover:text-[#E1FF00]"
-            >
-              ClASSES
-            </Link>
-            <Link
-              to="/joinedclasses"
-              className="text-base font-links font-bold mt-2 mr-1 hover:text-[#E1FF00]"
-            >
-              ClASSROOM
-            </Link>
-            <Link
-              to="/workspace"
-              className="text-base font-links font-bold mt-2 mr-1 hover:text-[#E1FF00]"
-            >
-              WORKSPACE
-            </Link>
+
+            {profile.type === "teacher" && (
+              <>
+                {success && (
+                  <div className="space-x-10 md:flex items-center">
+                    <Link
+                      to="/myclasses"
+                      className="text-base font-links font-bold mt-2 mr-1 hover:text-[#E1FF00]"
+                    >
+                      ClASSES
+                    </Link>
+                    <Link
+                      to="/workspace"
+                      className="text-base font-links font-bold mt-2 mr-1 hover:text-[#E1FF00]"
+                    >
+                      WORKSPACE
+                    </Link>
+                  </div>
+                )}
+              </>
+            )}
+
+            {profile.type === "student" && (
+              <>
+                <div className="space-x-10 md:flex items-center">
+                  <Link
+                    to="/joinedclasses"
+                    className="text-base font-links font-bold mt-2 mr-1 hover:text-[#E1FF00]"
+                  >
+                    ClASSROOM
+                  </Link>
+                </div>
+              </>
+            )}
+
+            {profile.type === "industry" && (
+              <>
+                <div className="space-x-10 md:flex items-center">
+                  <Link
+                    to="/workspace"
+                    className="text-base font-links font-bold mt-2 mr-1 hover:text-[#E1FF00]"
+                  >
+                    WORKSPACE
+                  </Link>
+                </div>
+              </>
+            )}
 
             {user.displayName ? (
               <button
@@ -113,13 +143,6 @@ export default function Navigation({ handleClick }) {
               <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-black divide-y-2 divide-gray-50">
                 <div className="pt-5 pb-6 px-5">
                   <div className="flex items-center justify-between">
-                    {/* <div>
-                      <div className="flex items-center">
-                        <h1 className="text-4xl font-black font-title ">
-                          GoodDeal
-                        </h1>
-                      </div>
-                    </div> */}
                     <NavLink to="/home">
                       <div className="flex ml-4 md:ml-1 items-center cursor-pointer text-black">
                         <img src={logo} alt="logo" className="w-20" />
