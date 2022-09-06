@@ -61,13 +61,6 @@ export default function ClassNav({ handleClick }) {
             >
               ANNOUNCE
             </NavLink>
-            {/* <NavLink
-              to="/people"
-              style={({ isActive }) => (isActive ? activeStyle : undefined)}
-              className="text-base font-links font-bold mt-2 mr-1 hover:text-[#E1FF00]"
-            >
-              PEOPLE
-            </NavLink> */}
             <NavLink
               to={`/myclasses/classroom/${code}/assigedposts`}
               style={({ isActive }) => (isActive ? activeStyle : undefined)}
@@ -208,13 +201,6 @@ export default function ClassNav({ handleClick }) {
               <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-black divide-y-2 divide-gray-50">
                 <div className="pt-5 pb-6 px-5">
                   <div className="flex items-center justify-between">
-                    {/* <div>
-                      <div className="flex items-center">
-                        <h1 className="text-4xl font-black font-title ">
-                          GoodDeal
-                        </h1>
-                      </div>
-                    </div> */}
                     <NavLink to="/home">
                       <div className="flex ml-4 md:ml-1 items-center cursor-pointer text-black">
                         <img src={logo} alt="logo" className="w-20" />

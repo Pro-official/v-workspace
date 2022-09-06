@@ -13,12 +13,12 @@ const Workspace = () => {
   const { user } = useAuth();
 
   useEffect(() => {
-    fetch("http://localhost:5000/projects")
+    fetch("https://morning-reef-14710.herokuapp.com/projects")
       .then((res) => res.json())
       .then((data) => setProjects(data));
     setLoading(true);
 
-    fetch("http://localhost:5000/users")
+    fetch("https://morning-reef-14710.herokuapp.com/users")
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, []);

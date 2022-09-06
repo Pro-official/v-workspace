@@ -6,7 +6,7 @@ const Submissions = () => {
   const [assignments, setAssignments] = useState([]);
   const [success, setSuccess] = useState(false);
   useEffect(() => {
-    fetch(`http://localhost:5000/assignments/`)
+    fetch(`https://morning-reef-14710.herokuapp.com/assignments/`)
       .then((res) => res.json())
       .then((data) => {
         setAssignments(data);

@@ -17,7 +17,7 @@ const SubmitAssignment = () => {
 
   useEffect(() => {
     if (email) {
-      fetch(`http://localhost:5000/users/${email}`)
+      fetch(`https://morning-reef-14710.herokuapp.com/users/${email}`)
         .then((res) => res.json())
         .then((data) => {
           setProfiles(data);
@@ -31,7 +31,7 @@ const SubmitAssignment = () => {
     const submissionData = { link, email, displayName, postID };
     // console.log(submissionData);
 
-    fetch(`http://localhost:5000/assignments`, {
+    fetch(`https://morning-reef-14710.herokuapp.com/assignments`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

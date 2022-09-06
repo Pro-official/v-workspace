@@ -10,7 +10,7 @@ const MyClasses = () => {
   const { user } = useAuth();
 
   useEffect(() => {
-    fetch("http://localhost:5000/classes")
+    fetch("https://morning-reef-14710.herokuapp.com/classes")
       .then((res) => res.json())
       .then((data) => setClasses(data));
     setLoading(true);

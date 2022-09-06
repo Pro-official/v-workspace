@@ -29,7 +29,7 @@ const PostAnnouncement = () => {
       const doc = docRef.current.value;
       const announcementData = { title, tag, description, link, doc, postID };
 
-      fetch(`http://localhost:5000/classes/posts/${code}`, {
+      fetch(`https://morning-reef-14710.herokuapp.com/classes/posts/${code}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",

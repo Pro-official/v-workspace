@@ -23,7 +23,7 @@ const CreateClass = () => {
     const classroom = { displayName: name, email, subject, org, code };
     e.preventDefault();
 
-    fetch(`http://localhost:5000/classes`, {
+    fetch(`https://morning-reef-14710.herokuapp.com/classes`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

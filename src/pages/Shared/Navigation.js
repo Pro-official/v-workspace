@@ -15,7 +15,7 @@ export default function Navigation() {
 
   useEffect(() => {
     if (email) {
-      fetch(`http://localhost:5000/users/${email}`)
+      fetch(`https://morning-reef-14710.herokuapp.com/users/${email}`)
         .then((res) => res.json())
         .then((data) => {
           setProfiles(data);

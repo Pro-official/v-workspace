@@ -17,7 +17,7 @@ const AssignInClass = () => {
   const codeRef = useRef();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/projects/${id}`)
+    fetch(`https://morning-reef-14710.herokuapp.com/projects/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setProject(data);
@@ -40,7 +40,7 @@ const AssignInClass = () => {
     };
     console.log(assignData);
 
-    fetch(`http://localhost:5000/classes/assign`, {
+    fetch(`https://morning-reef-14710.herokuapp.com/classes/assign`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

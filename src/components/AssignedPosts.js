@@ -14,7 +14,7 @@ const AssignedPosts = () => {
   const { code } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/classes/${code}`)
+    fetch(`https://morning-reef-14710.herokuapp.com/classes/${code}`)
       .then((res) => res.json())
       .then((data) => {
         setCl(data);

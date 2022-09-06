@@ -15,7 +15,7 @@ const Home = () => {
   const typeRef = useRef();
 
   useEffect(() => {
-    fetch("http://localhost:5000/users")
+    fetch("https://morning-reef-14710.herokuapp.com/users")
       .then((res) => res.json())
       .then((data) => setPersons(data));
   }, []);
@@ -28,7 +28,7 @@ const Home = () => {
     // console.log(profile);
     e.preventDefault();
 
-    fetch(`http://localhost:5000/users/${email}`, {
+    fetch(`https://morning-reef-14710.herokuapp.com/users/${email}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

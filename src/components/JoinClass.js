@@ -24,7 +24,7 @@ const JoinClass = () => {
     setjoinData(newData);
   };
 
-  fetch(`http://localhost:5000/classes/${joinData.code}`)
+  fetch(`https://morning-reef-14710.herokuapp.com/classes/${joinData.code}`)
     .then((res) => res.json())
     .then((data) => {
       setClasses(data);
@@ -41,7 +41,7 @@ const JoinClass = () => {
         courseName,
       };
 
-      fetch(`http://localhost:5000/users/join/${email}`, {
+      fetch(`https://morning-reef-14710.herokuapp.com/users/join/${email}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",
@@ -59,7 +59,7 @@ const JoinClass = () => {
       const id = idRef.current.value;
       const code = codeRef.current.value;
       const info = { id, email, code };
-      fetch(`http://localhost:5000/classes/join/student`, {
+      fetch(`https://morning-reef-14710.herokuapp.com/classes/join/student`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",
