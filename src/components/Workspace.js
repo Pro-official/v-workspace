@@ -13,12 +13,12 @@ const Workspace = () => {
   const { user } = useAuth();
 
   useEffect(() => {
-    fetch("https://morning-reef-14710.herokuapp.com/projects")
+    fetch("https://virtual-workspace-server.onrender.com/projects")
       .then((res) => res.json())
       .then((data) => setProjects(data));
     setLoading(true);
 
-    fetch("https://morning-reef-14710.herokuapp.com/users")
+    fetch("https://virtual-workspace-server.onrender.com/users")
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, []);

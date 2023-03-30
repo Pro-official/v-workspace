@@ -11,7 +11,7 @@ const JoinedClasses = () => {
   const { user } = useAuth();
 
   useEffect(() => {
-    fetch("https://morning-reef-14710.herokuapp.com/users")
+    fetch("https://virtual-workspace-server.onrender.com/users")
       .then((res) => res.json())
       .then((data) => {
         setClasses(data);

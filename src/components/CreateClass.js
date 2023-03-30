@@ -23,7 +23,7 @@ const CreateClass = () => {
     const classroom = { displayName: name, email, subject, org, code };
     e.preventDefault();
 
-    fetch(`https://morning-reef-14710.herokuapp.com/classes`, {
+    fetch(`https://virtual-workspace-server.onrender.com/classes`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

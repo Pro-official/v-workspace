@@ -10,7 +10,7 @@ const MyClasses = () => {
   const { user } = useAuth();
 
   useEffect(() => {
-    fetch("https://morning-reef-14710.herokuapp.com/classes")
+    fetch("https://virtual-workspace-server.onrender.com/classes")
       .then((res) => res.json())
       .then((data) => setClasses(data));
     setLoading(true);

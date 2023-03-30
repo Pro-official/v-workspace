@@ -17,7 +17,7 @@ const SubmitAssignment = () => {
 
   useEffect(() => {
     if (email) {
-      fetch(`https://morning-reef-14710.herokuapp.com/users/${email}`)
+      fetch(`https://virtual-workspace-server.onrender.com/users/${email}`)
         .then((res) => res.json())
         .then((data) => {
           setProfiles(data);
@@ -31,7 +31,7 @@ const SubmitAssignment = () => {
     const submissionData = { link, email, displayName, postID };
     // console.log(submissionData);
 
-    fetch(`https://morning-reef-14710.herokuapp.com/assignments`, {
+    fetch(`https://virtual-workspace-server.onrender.com/assignments`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

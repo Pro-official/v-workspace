@@ -26,7 +26,7 @@ const PostWork = () => {
     const projectData = { displayName: name, email, project, org, desc, limit };
     e.preventDefault();
 
-    fetch(`https://morning-reef-14710.herokuapp.com/projects`, {
+    fetch(`https://virtual-workspace-server.onrender.com/projects`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

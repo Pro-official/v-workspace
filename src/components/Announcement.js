@@ -29,13 +29,16 @@ const PostAnnouncement = () => {
       const doc = docRef.current.value;
       const announcementData = { title, tag, description, link, doc, postID };
 
-      fetch(`https://morning-reef-14710.herokuapp.com/classes/posts/${code}`, {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(announcementData),
-      })
+      fetch(
+        `https://virtual-workspace-server.onrender.com/classes/posts/${code}`,
+        {
+          method: "PUT",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(announcementData),
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           if (data.modifiedCount) {

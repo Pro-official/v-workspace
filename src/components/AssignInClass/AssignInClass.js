@@ -17,7 +17,7 @@ const AssignInClass = () => {
   const codeRef = useRef();
 
   useEffect(() => {
-    fetch(`https://morning-reef-14710.herokuapp.com/projects/${id}`)
+    fetch(`https://virtual-workspace-server.onrender.com/projects/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setProject(data);
@@ -40,7 +40,7 @@ const AssignInClass = () => {
     };
     console.log(assignData);
 
-    fetch(`https://morning-reef-14710.herokuapp.com/classes/assign`, {
+    fetch(`https://virtual-workspace-server.onrender.com/classes/assign`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

@@ -24,7 +24,9 @@ const JoinClass = () => {
     setjoinData(newData);
   };
 
-  fetch(`https://morning-reef-14710.herokuapp.com/classes/${joinData.code}`)
+  fetch(
+    `https://virtual-workspace-server.onrender.com/classes/${joinData.code}`
+  )
     .then((res) => res.json())
     .then((data) => {
       setClasses(data);
@@ -41,13 +43,16 @@ const JoinClass = () => {
         courseName,
       };
 
-      fetch(`https://morning-reef-14710.herokuapp.com/users/join/${email}`, {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(finalData),
-      })
+      fetch(
+        `https://virtual-workspace-server.onrender.com/users/join/${email}`,
+        {
+          method: "PUT",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(finalData),
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           if (data.modifiedCount) {
@@ -59,13 +64,16 @@ const JoinClass = () => {
       const id = idRef.current.value;
       const code = codeRef.current.value;
       const info = { id, email, code };
-      fetch(`https://morning-reef-14710.herokuapp.com/classes/join/student`, {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(info),
-      })
+      fetch(
+        `https://virtual-workspace-server.onrender.com/classes/join/student`,
+        {
+          method: "PUT",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(info),
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           if (data.modifiedCount) {

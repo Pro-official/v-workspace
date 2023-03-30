@@ -121,7 +121,7 @@ const useFirebase = () => {
 
   const saveUser = (email, displayName, method) => {
     const user = { email, displayName };
-    fetch("https://morning-reef-14710.herokuapp.com/users", {
+    fetch("https://virtual-workspace-server.onrender.com/users", {
       method: method,
       headers: {
         "content-type": "application/json",

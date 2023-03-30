@@ -6,7 +6,7 @@ const Submissions = () => {
   const [assignments, setAssignments] = useState([]);
   const [success, setSuccess] = useState(false);
   useEffect(() => {
-    fetch(`https://morning-reef-14710.herokuapp.com/assignments/`)
+    fetch(`https://virtual-workspace-server.onrender.com/assignments/`)
       .then((res) => res.json())
       .then((data) => {
         setAssignments(data);

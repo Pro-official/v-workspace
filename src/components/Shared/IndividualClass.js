@@ -11,7 +11,7 @@ const IndividualClass = () => {
   const { code } = useParams();
 
   useEffect(() => {
-    fetch(`https://morning-reef-14710.herokuapp.com/classes/${code}`)
+    fetch(`https://virtual-workspace-server.onrender.com/classes/${code}`)
       .then((res) => res.json())
       .then((data) => {
         setCl(data);
