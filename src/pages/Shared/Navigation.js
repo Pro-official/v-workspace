@@ -11,7 +11,7 @@ export default function Navigation() {
   const navigate = useNavigate();
   const [profile, setProfiles] = useState([]);
   const [success, setSuccess] = useState(false);
-  const email = user.email;
+  const email = user?.email;
 
   useEffect(() => {
     if (email) {
@@ -50,7 +50,7 @@ export default function Navigation() {
               HOME
             </Link>
 
-            {profile.type === "teacher" && (
+            {profile?.type === "teacher" && (
               <>
                 {success && (
                   <div className="space-x-10 md:flex items-center">
@@ -84,7 +84,7 @@ export default function Navigation() {
               </>
             )}
 
-            {profile.type === "student" && (
+            {profile?.type === "student" && (
               <>
                 <div className="space-x-10 md:flex items-center">
                   <Link
@@ -97,7 +97,7 @@ export default function Navigation() {
               </>
             )}
 
-            {profile.type === "industry" && (
+            {profile?.type === "industry" && (
               <>
                 <div className="space-x-10 md:flex items-center">
                   <Link
@@ -110,14 +110,14 @@ export default function Navigation() {
               </>
             )}
 
-            {user.displayName ? (
+            {user?.displayName ? (
               <button
                 onClick={handleLogout}
                 className="text-base hover:text-[#E1FF00] font-links font-bold mt-2 mr-1 "
               >
                 LOGOUT{" "}
                 <span className="border-2 border-white py-1 px-2 rounded-lg">
-                  {user.displayName.split(" ")[0]}
+                  {user?.displayName.split(" ")[0]}
                 </span>
               </button>
             ) : (
@@ -186,7 +186,7 @@ export default function Navigation() {
                         My Class
                       </Link>
 
-                      {user.displayName ? (
+                      {user?.displayName ? (
                         <button
                           onClick={handleLogout}
                           to="/signup"
@@ -194,7 +194,7 @@ export default function Navigation() {
                         >
                           LOGOUT{" "}
                           <span className="border-2 border-white py-1 px-2 rounded-lg">
-                            {user.displayName.split(" ")[0]}
+                            {user?.displayName.split(" ")[0]}
                           </span>
                         </button>
                       ) : (

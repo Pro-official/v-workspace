@@ -34,7 +34,7 @@ const Login = () => {
     signInWithGoogle(location, navigate);
   };
 
-  if (user.email) {
+  if (user?.email) {
     navigate("/home");
   }
 

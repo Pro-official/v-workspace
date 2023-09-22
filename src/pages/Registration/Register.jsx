@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { BeatLoader } from "react-spinners";
@@ -9,10 +9,16 @@ import Navigation from "../Shared/Navigation";
 
 const Signup = () => {
   const [loginData, setLoginData] = useState({});
+  const [loading, setLoading] = useState([]);
 
   const navigate = useNavigate();
   const { user, registerUser, signInWithGoogle, isLoading } = useAuth();
   // console.log(user);
+  useEffect(() => {
+    fetch(`https://virtual-workspace-server.onrender.com/users`)
+      .then((res) => res.json())
+      .then((data) => setLoading(data));
+  }, [user.email]);
 
   if (user.email) {
     navigate("/home");
@@ -36,7 +42,8 @@ const Signup = () => {
     e.preventDefault();
   };
   const handleGoogleLogin = () => {
-    signInWithGoogle();
+    console.log(loading);
+    if (loading) signInWithGoogle();
   };
 
   return (

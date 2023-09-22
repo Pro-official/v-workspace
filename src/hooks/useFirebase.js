@@ -13,12 +13,11 @@ import {
   getIdToken,
   signOut,
 } from "firebase/auth";
-// import initializeAuthentication from "./../pages/Shared/Firebase/Firebase.init";
 import firebaseConfig from "../pages/Shared/Firebase/Firebase.config";
+
 
 // initialize firebase app
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 const database = getDatabase(app);
 
 const useFirebase = () => {
@@ -101,11 +100,11 @@ const useFirebase = () => {
     return () => unsubscribed;
   }, [auth]);
 
-  useEffect(() => {
-    fetch(`https://radiant-journey-70403.herokuapp.com/users/${user.email}`)
-      .then((res) => res.json())
-      .then((data) => setAdmin(data.admin));
-  }, [user.email]);
+  // useEffect(() => {
+  //   fetch(`https://virtual-workspace-server.onrender.com/users/${user.email}`)
+  //     .then((res) => res.json())
+  //     .then((data) => setAdmin(data.admin));
+  // }, [user.email]);
 
   const logout = () => {
     setIsLoading(true);

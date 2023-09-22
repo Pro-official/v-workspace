@@ -4,6 +4,7 @@ import Register from "./pages/Registration/Register.jsx";
 import AuthProvider from "./context/AuthProvider";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Registration/Login";
+import UpdateRole from "./pages/Shared/UpdateRole";
 import Students from "./pages/Students";
 import Teachers from "./pages/Teachers";
 import Industries from "./pages/Industries";
@@ -29,6 +30,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/updateprofile" element={<UpdateRole />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/student" element={<Students />} />
