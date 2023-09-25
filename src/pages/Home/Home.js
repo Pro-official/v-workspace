@@ -21,7 +21,7 @@ const Home = () => {
       .then((res) => res.json())
       .then((data) => setPersons(data));
     setLoading(true);
-  }, []);
+  }, [user.email]);
 
   const handleUpdate = (e) => {
     const name = nameRef.current.value;

@@ -5,10 +5,11 @@ import useAuth from "../../hooks/useAuth";
 import Navigation from "./Navigation";
 
 const UpdateRole = () => {
-  const [person, setPersons] = useState([]);
-  const [loading, setLoading] = useState(false);
   const { user } = useAuth();
   const navigate = useNavigate();
+
+  const [person, setPersons] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const nameRef = useRef();
   const emailRef = useRef();
@@ -19,7 +20,8 @@ const UpdateRole = () => {
       .then((res) => res.json())
       .then((data) => setPersons(data));
     setLoading(true);
-  }, []);
+  }, [user?.email]);
+
   const handleUpdate = (e) => {
     const name = nameRef.current.value;
     const email = emailRef.current.value;
@@ -56,7 +58,7 @@ const UpdateRole = () => {
               Register yourself as a student, teacher or industry expart to get
               more personalised options
             </p>
-            <form onSubmit={handleUpdate} key={person.email} className="mt-10">
+            <form onSubmit={handleUpdate} key={person?.email} className="mt-10">
               <input
                 type="hidden"
                 name="access_key"
@@ -81,7 +83,7 @@ const UpdateRole = () => {
                     name="email"
                     ref={emailRef}
                     className="peer block w-full appearance-none border-0 border-b border-[#163A24] bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-[#163A24] focus:outline-none focus:ring-0"
-                    defaultValue={person.email}
+                    defaultValue={person?.email}
                   />
                   <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-[#163A24] duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-[#163A24]">
                     Your email
