@@ -19,7 +19,6 @@ const IndividualClass = () => {
       });
   }, [code, success]);
 
-  // console.log(cl);
   return (
     <>
       <ClassNav />

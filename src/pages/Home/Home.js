@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-// import MainPage from "../../components/MainPage";
 import { GridLoader } from "react-spinners";
 import useAuth from "../../hooks/useAuth";
 import "../../components/Mainpage.css";

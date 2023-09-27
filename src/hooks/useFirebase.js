@@ -1,20 +1,18 @@
 import { useState, useEffect } from "react";
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import { getDatabase } from "firebase/database";
 import {
   getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  GoogleAuthProvider,
-  signInWithPopup,
-  updateProfile,
-  getIdToken,
   signOut,
+  getIdToken,
+  updateProfile,
+  signInWithPopup,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
 } from "firebase/auth";
 import firebaseConfig from "../pages/Shared/Firebase/Firebase.config";
-
 
 // initialize firebase app
 const app = initializeApp(firebaseConfig);
@@ -49,7 +47,6 @@ const useFirebase = () => {
       })
       .catch((error) => {
         setAuthError(error.message);
-        console.log(error);
       })
       .finally(() => setIsLoading(false));
   };
@@ -99,12 +96,6 @@ const useFirebase = () => {
     });
     return () => unsubscribed;
   }, [auth]);
-
-  // useEffect(() => {
-  //   fetch(`https://virtual-workspace-server.onrender.com/users/${user.email}`)
-  //     .then((res) => res.json())
-  //     .then((data) => setAdmin(data.admin));
-  // }, [user.email]);
 
   const logout = () => {
     setIsLoading(true);

@@ -20,7 +20,6 @@ const PostAnnouncement = () => {
 
   const handleSubmit = (e) => {
     const postID = Math.random().toString(36).substring(2, 7);
-    // console.log(postID);
     if (postID !== "") {
       const title = titleRef.current.value;
       const tag = tagRef.current.value;
@@ -49,7 +48,6 @@ const PostAnnouncement = () => {
 
       e.preventDefault();
       e.target.reset();
-      // console.log(announcementData);
     }
   };
 

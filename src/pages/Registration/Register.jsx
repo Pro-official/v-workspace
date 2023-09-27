@@ -13,7 +13,7 @@ const Signup = () => {
 
   const navigate = useNavigate();
   const { user, registerUser, signInWithGoogle, isLoading } = useAuth();
-  // console.log(user);
+
   useEffect(() => {
     fetch(`https://virtual-workspace-server.onrender.com/users`)
       .then((res) => res.json())
@@ -42,7 +42,6 @@ const Signup = () => {
     e.preventDefault();
   };
   const handleGoogleLogin = () => {
-    console.log(loading);
     if (loading) signInWithGoogle();
   };
 

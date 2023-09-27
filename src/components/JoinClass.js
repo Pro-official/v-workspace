@@ -81,7 +81,6 @@ const JoinClass = () => {
             navigate(`/myclasses/classroom/${joinData.code}`);
           }
         });
-      // console.log(info);
     }
     e.preventDefault();
     e.target.reset();

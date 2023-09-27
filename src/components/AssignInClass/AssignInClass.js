@@ -27,7 +27,6 @@ const AssignInClass = () => {
 
   const handleSubmit = (e) => {
     const postID = Math.random().toString(36).substring(2, 7);
-    console.log(postID);
     const instruction = insturctionRef.current.value;
     const code = codeRef.current.value;
     const assignData = {
@@ -38,7 +37,6 @@ const AssignInClass = () => {
       postID,
       instruction,
     };
-    console.log(assignData);
 
     fetch(`https://virtual-workspace-server.onrender.com/classes/assign`, {
       method: "PUT",

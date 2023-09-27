@@ -29,7 +29,6 @@ const SubmitAssignment = () => {
   const handleSubmit = (e) => {
     const link = linkRef.current.value;
     const submissionData = { link, email, displayName, postID };
-    // console.log(submissionData);
 
     fetch(`https://virtual-workspace-server.onrender.com/assignments`, {
       method: "POST",
